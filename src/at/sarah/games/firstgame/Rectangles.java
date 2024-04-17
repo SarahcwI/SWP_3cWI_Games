@@ -5,12 +5,18 @@ import org.newdawn.slick.*;
 
 public class Rectangles extends BasicGame {
     public enum Direction {RIGHT, DOWN, LEFT, UP}
+    public enum Direction1 {RIGHT, DOWN, LEFT, UP}
+    public enum Direction2 {RIGHT, DOWN, LEFT, UP}
     private float recx;
     private float recy;
     private float ovx;
     private float ovy;
-    private float recSpeed;
-    private Direction actualDirection = Direction.RIGHT;
+    private float circx;
+    private float circy;
+    private float Speed;
+    private Direction actualDirectionRec = Direction.RIGHT;
+    private Direction1 actualDirectionOv = Direction1.RIGHT;
+    private Direction2 actualDirectionCirc = Direction2.DOWN;
 
 
 
@@ -25,7 +31,8 @@ public class Rectangles extends BasicGame {
         this.recy = 100;
         this.ovy = 0;
         this.ovx = 100;
-        this.recSpeed = 4.0f;
+        this.circx = 0;
+        this.Speed = 4.0f;
     }
 
     @Override
@@ -37,62 +44,80 @@ public class Rectangles extends BasicGame {
         double windowBoarderVerticalUp = gameContainer.getHeight() * 0.1;
 
 
-        if (actualDirection==Direction.RIGHT){
+        if (actualDirectionRec==Direction.RIGHT){
             this.recx = moveRight(this.recx, delta);
             int newNumber = Math.round(this.recx);
             System.out.println("new:" + newNumber + " : " + windowBoarderHorizontalRight);
             if (newNumber > windowBoarderHorizontalRight){
                 System.out.println("Bigger");
-                this.actualDirection = Direction.DOWN;
+                this.actualDirectionRec = Direction.DOWN;
                 System.out.println("DOWN");
             }
         }
-        if (actualDirection==Direction.DOWN){
+        if (actualDirectionRec==Direction.DOWN){
             this.recy = moveDown(this.recy, delta);
             int newNumber = Math.round(this.recy);
             if (newNumber> windowBoarderVerticalDown){
-                this.actualDirection = Direction.LEFT;
+                this.actualDirectionRec = Direction.LEFT;
                 System.out.println("LEFT");
             }
         }
-        if (actualDirection==Direction.LEFT){
+        if (actualDirectionRec==Direction.LEFT){
             this.recx = moveLeft(this.recx, delta);
             int newNumber = Math.round(this.recx);
             //System.out.println("x: " + this.recx);
             if (newNumber < windowBoarderHorizontalLeft ){
-                this.actualDirection = Direction.UP;
+                this.actualDirectionRec = Direction.UP;
                 System.out.println("UP");
             }
 
 
         }
 
-        if (actualDirection==Direction.UP){
+        if (actualDirectionRec==Direction.UP){
             this.recy = moveUp(this.recy, delta);
             int newNumber = Math.round(this.recy);
             if (newNumber < windowBoarderVerticalUp){
-                this.actualDirection = Direction.RIGHT;
+                this.actualDirectionRec = Direction.RIGHT;
                 System.out.println("RIGHT");
             }
         }
 
 
 
-//        if (actualDirection==Direction.RIGHT){
-//            this.ovx = moveRight(this.ovx, delta);
-//            if (this.ovx>windowBoarderHorizontalRight){
-//                this.actualDirection = Direction.LEFT;
-//            }
-//
-//
-//        }
-//
-//        if (actualDirection==Direction.LEFT){
-//            this.ovx = moveLeft(this.ovx, delta);
-//            if (this.ovx<=windowBoarderHorizontalLeft){
-//                this.actualDirection = Direction.RIGHT;
-//            }
-//        }
+        if (actualDirectionOv==Direction1.RIGHT){
+            this.ovx = moveRight(this.ovx, delta);
+            if (this.ovx>windowBoarderHorizontalRight){
+                this.actualDirectionOv = Direction1.LEFT;
+            }
+
+
+        }
+
+        if (actualDirectionOv==Direction1.LEFT){
+           this.ovx = moveLeft(this.ovx, delta);
+           if (this.ovx<=windowBoarderHorizontalLeft){
+                this.actualDirectionOv = Direction1.RIGHT;
+            }
+        }
+
+
+        if(actualDirectionCirc==Direction2.DOWN){
+            System.out.println("Hallo");
+            this.circy = moveDown(this.circy,delta);
+            if(this.circy >= windowBoarderVerticalDown){
+                this.actualDirectionCirc = Direction2.UP;
+            }
+        }
+
+        if(actualDirectionCirc==Direction2.UP){
+            this.circy = moveUp(this.circy,delta);
+            if(this.circy <= windowBoarderVerticalUp){
+                this.actualDirectionCirc = Direction2.DOWN;
+            }
+        }
+
+
 
         /*if (this.ovx < 800 ){
             actualDirection = true;
@@ -121,6 +146,7 @@ public class Rectangles extends BasicGame {
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
         graphics.drawRect(this.recx,this.recy,100,100);
         graphics.drawOval(this.ovx, this.ovy, 100, 50);
+        graphics.drawOval(this.circx, this.circy, 80,80);
         graphics.drawString("Hello World!", 50, 50);
 
     }
@@ -140,19 +166,19 @@ public class Rectangles extends BasicGame {
 
 
     public float moveRight(float xChord, int delta){
-       return xChord + (float)delta/this.recSpeed;
+       return xChord + (float)delta/this.Speed;
     }
 
     public float moveLeft(float xChord, int delta){
-        return xChord -= (float)delta/this.recSpeed;
+        return xChord -= (float)delta/this.Speed;
     }
 
     public float moveUp(float yChord, int delta) {
-        return yChord -= (float) delta / this.recSpeed;
+        return yChord -= (float) delta / this.Speed;
     }
 
     public float moveDown(float yChord, int delta){
-        return yChord += (float)delta/this.recSpeed;
+        return yChord += (float)delta/this.Speed;
     }
 
 
