@@ -3,7 +3,7 @@ package at.sarah.games.firstgame;
 import org.newdawn.slick.*;
 
 
-public class Rectangles extends BasicGame {
+public class oldObjects extends BasicGame {
     public enum Direction {RIGHT, DOWN, LEFT, UP}
     public enum Direction1 {RIGHT, DOWN, LEFT, UP}
     public enum Direction2 {RIGHT, DOWN, LEFT, UP}
@@ -21,7 +21,7 @@ public class Rectangles extends BasicGame {
 
 
 
-    public Rectangles(String title) {
+    public oldObjects(String title) {
         super(title);
     }
 
@@ -46,40 +46,28 @@ public class Rectangles extends BasicGame {
 
         if (actualDirectionRec==Direction.RIGHT){
             this.recx = moveRight(this.recx, delta);
-            int newNumber = Math.round(this.recx);
-            System.out.println("new:" + newNumber + " : " + windowBoarderHorizontalRight);
-            if (newNumber > windowBoarderHorizontalRight){
-                System.out.println("Bigger");
+            if (this.recx > windowBoarderHorizontalRight){
                 this.actualDirectionRec = Direction.DOWN;
-                System.out.println("DOWN");
+
             }
         }
         if (actualDirectionRec==Direction.DOWN){
             this.recy = moveDown(this.recy, delta);
-            int newNumber = Math.round(this.recy);
-            if (newNumber> windowBoarderVerticalDown){
+            if (this.recy> windowBoarderVerticalDown){
                 this.actualDirectionRec = Direction.LEFT;
-                System.out.println("LEFT");
             }
         }
         if (actualDirectionRec==Direction.LEFT){
             this.recx = moveLeft(this.recx, delta);
-            int newNumber = Math.round(this.recx);
-            //System.out.println("x: " + this.recx);
-            if (newNumber < windowBoarderHorizontalLeft ){
+            if (this.recx < windowBoarderHorizontalLeft ){
                 this.actualDirectionRec = Direction.UP;
-                System.out.println("UP");
             }
-
-
         }
 
         if (actualDirectionRec==Direction.UP){
             this.recy = moveUp(this.recy, delta);
-            int newNumber = Math.round(this.recy);
-            if (newNumber < windowBoarderVerticalUp){
+            if (recy < windowBoarderVerticalUp){
                 this.actualDirectionRec = Direction.RIGHT;
-                System.out.println("RIGHT");
             }
         }
 
@@ -95,15 +83,14 @@ public class Rectangles extends BasicGame {
         }
 
         if (actualDirectionOv==Direction1.LEFT){
-           this.ovx = moveLeft(this.ovx, delta);
-           if (this.ovx<=windowBoarderHorizontalLeft){
+            this.ovx = moveLeft(this.ovx, delta);
+            if (this.ovx<=windowBoarderHorizontalLeft){
                 this.actualDirectionOv = Direction1.RIGHT;
             }
         }
 
 
         if(actualDirectionCirc==Direction2.DOWN){
-            System.out.println("Hallo");
             this.circy = moveDown(this.circy,delta);
             if(this.circy >= windowBoarderVerticalDown){
                 this.actualDirectionCirc = Direction2.UP;
@@ -153,7 +140,7 @@ public class Rectangles extends BasicGame {
 
     public static void main(String[] argv) {
         try {
-            AppGameContainer container = new AppGameContainer(new Rectangles("Rectangles"));
+            AppGameContainer container = new AppGameContainer(new oldObjects("Rectangles"));
             container.setDisplayMode(1000,800,false);
             container.start();
         } catch (SlickException e) {
@@ -166,7 +153,7 @@ public class Rectangles extends BasicGame {
 
 
     public float moveRight(float xChord, int delta){
-       return xChord + (float)delta/this.Speed;
+        return xChord + (float)delta/this.Speed;
     }
 
     public float moveLeft(float xChord, int delta){
