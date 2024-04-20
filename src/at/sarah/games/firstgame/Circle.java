@@ -2,20 +2,23 @@ package at.sarah.games.firstgame;
 
 import org.newdawn.slick.Graphics;
 
-public class Circle {
-    private enum DIRECTION {RIGHT, DOWN, LEFT, UP};
-    private float x;
-    private float y;
-    private float speed;
+import java.util.Random;
 
-    public Circle(float x, float y, float speed) {
-        this.x = x;
-        this.y = y;
-        this.speed = speed;
+public class Circle {
+    private float x,y;
+    private float speed;
+    private int diamter;
+
+    public Circle() {
+        Random random = new Random();
+        this.x = random.nextInt(800);
+        this.y = random.nextInt(800);
+        this.speed = random.nextInt(40) + 10;
+        this.diamter = random.nextInt(20) + 10;
     }
 
     public void render(Graphics graphics){
-        graphics.drawOval(this.x, this.y,50,50);
+        graphics.drawOval(this.x, this.y,this.diamter,this.diamter);
     }
 
     public void update(int delta){
