@@ -16,7 +16,7 @@ public class Rectangle {
     }
 
     public void render(Graphics graphics){
-        graphics.drawRect(this.x, this.y,10,50);
+        graphics.drawRect(this.x, this.y,10,10);
     }
 
     public void update(int delta){
