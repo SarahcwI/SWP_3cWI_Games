@@ -8,9 +8,7 @@ public class Rectangle implements Actor {
     private float x;
     private float y;
     private float speed;
-
     public enum Direction {RIGHT, LEFT}
-
     private Direction direction;
 
 
