@@ -1,5 +1,6 @@
 package at.sarah.games.firstgame;
 
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
 import java.util.Random;
@@ -25,7 +26,7 @@ public class Rectangle implements Actor {
         graphics.drawRect(this.x, this.y, 10, 10);
     }
 
-    public void update(int delta) {
+    public void update(GameContainer gameContainer, int delta) {
         if (this.direction == Direction.RIGHT) {
             this.x += (float) delta / this.speed;
             if (this.x > 1000) {

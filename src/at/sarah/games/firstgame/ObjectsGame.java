@@ -20,6 +20,13 @@ public class ObjectsGame extends BasicGame {
         this.actorsList = new ArrayList<>();
 
         for (int i = 0; i < 10; i++) {
+            Asteriod asteriod = new Asteriod();
+            actorsList.add(asteriod);
+
+        }
+
+
+        for (int i = 0; i < 10; i++) {
             Rectangle rectangle = new Rectangle(Rectangle.Direction.RIGHT);
             actorsList.add(rectangle);
         }
@@ -35,12 +42,23 @@ public class ObjectsGame extends BasicGame {
             actorsList.add(ellipse);
 
         }
+
+        Rocket rocket = new Rocket();
+        actorsList.add(rocket);
+
+
+    }
+
+
+    @Override
+    public void keyPressed(int key, char c) {
+        System.out.println(key);
     }
 
     @Override
     public void update(GameContainer gameContainer, int delta) throws SlickException {
         for (Actor actor : this.actorsList) {
-            actor.update(delta);
+            actor.update(gameContainer, delta);
         }
 
     }
