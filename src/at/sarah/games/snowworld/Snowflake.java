@@ -21,6 +21,7 @@ public class Snowflake implements Actor {
         if (this.size == Size.small){
             this.diamter = 5;
             this.speed = 8;
+
         }
         if (this.size == Size.medium){
             this.diamter = 10;

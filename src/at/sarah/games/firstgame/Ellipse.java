@@ -1,5 +1,6 @@
 package at.sarah.games.firstgame;
 
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
 import java.util.Random;
@@ -22,7 +23,7 @@ public class Ellipse implements Actor{
     }
 
     @Override
-    public void update(int delta) {
+    public void update(GameContainer gameContainer, int delta) {
         Random random = new Random();
         this.y += (float)delta/this.speed;
         this.x += (float)delta/this.speed;

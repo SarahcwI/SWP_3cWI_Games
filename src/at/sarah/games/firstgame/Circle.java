@@ -1,5 +1,6 @@
 package at.sarah.games.firstgame;
 
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
 import java.util.Random;
@@ -21,7 +22,7 @@ public class Circle implements Actor {
         graphics.drawOval(this.x, this.y,this.diamter,this.diamter);
     }
 
-    public void update(int delta){
+    public void update(GameContainer gameContainer, int delta){
         Random random = new Random();
         this.y += (float)delta/this.speed;
         this.diamter += 0.01;
