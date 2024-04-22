@@ -9,6 +9,7 @@ import java.util.List;
 
 public class ObjectsGame extends BasicGame {
     private List<Actor> actorsList;
+    private Rocket rocket;
 
     public ObjectsGame(String title) {
         super(title);
@@ -18,6 +19,7 @@ public class ObjectsGame extends BasicGame {
     @Override
     public void init(GameContainer gameContainer) throws SlickException {
         this.actorsList = new ArrayList<>();
+
 
         for (int i = 0; i < 10; i++) {
             Asteriod asteriod = new Asteriod();
@@ -46,13 +48,18 @@ public class ObjectsGame extends BasicGame {
         Rocket rocket = new Rocket();
         actorsList.add(rocket);
 
+        this.rocket = rocket;
 
     }
 
 
     @Override
     public void keyPressed(int key, char c) {
-        System.out.println(key);
+        if(key == Input.KEY_SPACE){
+            System.out.println("huhu ");
+            CanonBall canonBall = new CanonBall(this.rocket.getX(), this.rocket.getY());
+            actorsList.add(canonBall);
+        }
     }
 
     @Override

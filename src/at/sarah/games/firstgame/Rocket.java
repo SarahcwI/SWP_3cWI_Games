@@ -45,9 +45,13 @@ public class Rocket implements Actor{
             this.y += (float)delta/speed;
         };
 
+    }
 
+    public float getX() {
+        return x + 100;
+    }
 
-
-
+    public float getY() {
+        return y + 50;
     }
 }
