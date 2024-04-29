@@ -9,6 +9,7 @@ public class Rocket implements Actor{
     private float rot;
 
 
+
     public Rocket() throws SlickException {
         Image tmp = new Image("testdata/rocket.png");
         this.rocketImage = tmp.getScaledCopy(120, 120);
@@ -23,20 +24,28 @@ public class Rocket implements Actor{
         rocketImage.draw(this.x,this.y);
         rocketImage.setRotation(rot);
 
+
     }
 
     @Override
     public void update(GameContainer gameContainer, int delta) {
+        int width = gameContainer.getWidth();
 
-        if(this.x > 1000){
-            this.x = -100;
-        }
+
+
+
 
         if(gameContainer.getInput().isKeyDown(Input.KEY_RIGHT)){
             this.x += (float)delta/speed;
+            if(this.x > width){
+                this.x = -20;
+            }
         };
         if(gameContainer.getInput().isKeyDown(Input.KEY_LEFT)){
             this.x -= (float)delta/speed;
+            if (this.x<0){
+                this.x = width;
+            }
         };
         if(gameContainer.getInput().isKeyDown(Input.KEY_UP)){
             this.y -= (float)delta/speed;
@@ -54,4 +63,6 @@ public class Rocket implements Actor{
     public float getY() {
         return y + 50;
     }
+
+
 }

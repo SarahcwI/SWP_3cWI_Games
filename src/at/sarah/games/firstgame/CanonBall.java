@@ -9,7 +9,7 @@ public class CanonBall implements Actor{
     public CanonBall(float x, float y) {
         this.x = x;
         this.y = y;
-        this.speed = 2;
+        this.speed = 1;
     }
 
     @Override

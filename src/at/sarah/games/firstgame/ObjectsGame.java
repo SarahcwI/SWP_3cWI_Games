@@ -56,10 +56,11 @@ public class ObjectsGame extends BasicGame {
     @Override
     public void keyPressed(int key, char c) {
         if(key == Input.KEY_SPACE){
-            System.out.println("huhu ");
+            System.out.println("huhu");
             CanonBall canonBall = new CanonBall(this.rocket.getX(), this.rocket.getY());
             actorsList.add(canonBall);
         }
+        System.out.println(key);
     }
 
     @Override
@@ -86,5 +87,7 @@ public class ObjectsGame extends BasicGame {
             e.printStackTrace();
         }
     }
+
+
 
 }
