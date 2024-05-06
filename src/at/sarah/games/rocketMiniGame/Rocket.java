@@ -1,9 +1,11 @@
 package at.sarah.games.rocketMiniGame;
 
+import at.sarah.games.collision.CollissionActor;
 import at.sarah.games.firstgame.Actor;
 import org.newdawn.slick.*;
+import org.newdawn.slick.geom.Shape;
 
-public class Rocket implements Actor {
+public class Rocket implements CollissionActor {
     private Image rocketImage;
     private float x,y;
     private float speed;
@@ -12,7 +14,7 @@ public class Rocket implements Actor {
 
 
     public Rocket() throws SlickException {
-        Image tmp = new Image("testdata/rocket.png");
+        Image tmp = new Image("testdata/turtle.png");
         this.rocketImage = tmp.getScaledCopy(120, 120);
         this.x = 100;
         this.y = 100;
@@ -31,10 +33,7 @@ public class Rocket implements Actor {
     @Override
     public void update(GameContainer gameContainer, int delta) {
         int width = gameContainer.getWidth();
-
-
-
-
+        int height = gameContainer.getHeight();
 
         if(gameContainer.getInput().isKeyDown(Input.KEY_RIGHT)){
             this.x += (float)delta/speed;
@@ -50,10 +49,17 @@ public class Rocket implements Actor {
         };
         if(gameContainer.getInput().isKeyDown(Input.KEY_UP)){
             this.y -= (float)delta/speed;
+            if (this.y<-20){
+                this.y = height ;
+            }
         };
         if(gameContainer.getInput().isKeyDown(Input.KEY_DOWN)){
             this.y += (float)delta/speed;
+            if (this.y>height){
+                this.y = -20 ;
+            }
         };
+
 
     }
 
@@ -66,4 +72,8 @@ public class Rocket implements Actor {
     }
 
 
+    @Override
+    public Shape getShape() {
+        return null;
+    }
 }

@@ -1,7 +1,6 @@
 package at.sarah.games.rocketMiniGame;
 
-import at.sarah.games.firstgame.Asteriod;
-import at.sarah.games.firstgame.Rocket;
+
 import at.sarah.games.firstgame.*;
 import org.newdawn.slick.*;
 
@@ -12,6 +11,9 @@ import java.util.List;
 public class RocketGameMain extends BasicGame {
     private List<Actor> actorsList;
     private Rocket rocket;
+    private Input input;
+
+    private int timeSinceLastBullet = 0;
 
     public RocketGameMain(String title) {
         super(title);
@@ -21,6 +23,9 @@ public class RocketGameMain extends BasicGame {
     @Override
     public void init(GameContainer gameContainer) throws SlickException {
         this.actorsList = new ArrayList<>();
+        input = gameContainer.getInput();
+        //input.enableKeyRepeat(0,0);
+
 
 
         for (int i = 0; i < 10; i++) {
@@ -36,14 +41,11 @@ public class RocketGameMain extends BasicGame {
     }
 
 
+
+
     @Override
     public void keyPressed(int key, char c) {
-        if(key == Input.KEY_SPACE){
-            System.out.println("huhu");
-            CanonBall canonBall = new CanonBall(this.rocket.getX(), this.rocket.getY());
-            actorsList.add(canonBall);
-        }
-        System.out.println(key);
+
     }
 
     @Override
@@ -52,6 +54,15 @@ public class RocketGameMain extends BasicGame {
             actor.update(gameContainer, delta);
         }
 
+        if (input.isKeyDown(Input.KEY_SPACE)){
+            System.out.println("Down");
+            this.timeSinceLastBullet += delta;
+           if (timeSinceLastBullet>100){
+               CanonBall canonBall = new CanonBall(this.rocket.getX(), this.rocket.getY());
+               actorsList.add(canonBall);
+               timeSinceLastBullet=0;
+           }
+        }
     }
 
     @Override
@@ -70,7 +81,6 @@ public class RocketGameMain extends BasicGame {
             e.printStackTrace();
         }
     }
-
 
 
 }

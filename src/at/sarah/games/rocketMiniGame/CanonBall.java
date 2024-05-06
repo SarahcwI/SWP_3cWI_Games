@@ -1,10 +1,12 @@
 package at.sarah.games.rocketMiniGame;
 
+import at.sarah.games.collision.CollissionActor;
 import at.sarah.games.firstgame.Actor;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.geom.Shape;
 
-public class CanonBall implements Actor {
+public class CanonBall implements CollissionActor {
     private float x,y,speed;
 
     public CanonBall(float x, float y) {
@@ -23,5 +25,10 @@ public class CanonBall implements Actor {
     public void update(GameContainer gameContainer, int delta) {
         this.x+= (float) delta/speed;
 
+    }
+
+    @Override
+    public Shape getShape() {
+        return null;
     }
 }
