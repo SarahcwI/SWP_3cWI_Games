@@ -14,14 +14,13 @@ public class Snowflake implements Actor {
 
     public Snowflake(Size size) {
         Random random = new Random();
-        this.x = random.nextInt(1000);
-        this.y = random.nextInt(1000) - 1000 ;
+        this.x = random.nextInt(Snowworld.SCREEN_WIDTH);
+        this.y = random.nextInt(Snowworld.SCREEN_HEIGHT) - Snowworld.SCREEN_HEIGHT ;
         this.size = size;
 
         if (this.size == Size.small){
             this.diamter = 5;
             this.speed = 8;
-
         }
         if (this.size == Size.medium){
             this.diamter = 10;
@@ -31,7 +30,6 @@ public class Snowflake implements Actor {
             this.diamter = 15;
             this.speed = 2;
         }
-
     }
 
 
@@ -46,10 +44,9 @@ public class Snowflake implements Actor {
 
         this.y += (float)delta/this.speed;
 
-        if(this.y > 1000){
-            this.y = random.nextInt(1000) - 1000 ;
-            this.x = random.nextInt(1000);
+        if(this.y > Snowworld.SCREEN_HEIGHT){
+            this.x = random.nextInt(Snowworld.SCREEN_WIDTH);
+            this.y = random.nextInt(Snowworld.SCREEN_HEIGHT) - Snowworld.SCREEN_HEIGHT ;
         }
-
     }
 }
