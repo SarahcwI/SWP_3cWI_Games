@@ -4,7 +4,7 @@ import at.sarah.games.collision.CollissionActor;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Shape;
 
-public class Rocket implements CollissionActor {
+public class Turtle implements CollissionActor {
     private Image rocketImage;
     private float x,y;
     private float speed;
@@ -12,7 +12,7 @@ public class Rocket implements CollissionActor {
 
 
 
-    public Rocket() throws SlickException {
+    public Turtle() throws SlickException {
         Image tmp = new Image("testdata/turtle.png");
         this.rocketImage = tmp.getScaledCopy(120, 120);
         this.x = 100;

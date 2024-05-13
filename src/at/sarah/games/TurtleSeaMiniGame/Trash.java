@@ -2,14 +2,11 @@ package at.sarah.games.TurtleSeaMiniGame;
 
 import at.sarah.games.collision.CollissionActor;
 import org.newdawn.slick.*;
-import org.newdawn.slick.geom.Circle;
 import org.newdawn.slick.geom.Shape;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
-public class Astereoid implements CollissionActor {
+public class Trash implements CollissionActor {
 
     private Image astereoid;
     private float x, y, speed;
@@ -18,7 +15,7 @@ public class Astereoid implements CollissionActor {
 
 
 
-    public Astereoid() throws SlickException {
+    public Trash() throws SlickException {
         Random random = new Random();
         Image tmp = new Image("testdata/astereoid.png");
 

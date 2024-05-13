@@ -10,7 +10,7 @@ import java.util.List;
 
 public class RocketGameMain extends BasicGame {
     private List<Actor> actorsList;
-    private Rocket rocket;
+    private Turtle turtle;
     private Input input;
 
     private int timeSinceLastBullet = 0;
@@ -31,15 +31,15 @@ public class RocketGameMain extends BasicGame {
 
 
         for (int i = 0; i < 10; i++) {
-            Astereoid astereoid = new Astereoid();
-            actorsList.add(astereoid);
+            Trash trash = new Trash();
+            actorsList.add(trash);
 
         }
 
-        Rocket rocket = new Rocket();
-        actorsList.add(rocket);
+        Turtle turtle = new Turtle();
+        actorsList.add(turtle);
 
-        this.rocket = rocket;
+        this.turtle = turtle;
     }
 
 
@@ -60,8 +60,8 @@ public class RocketGameMain extends BasicGame {
             System.out.println("Down");
             this.timeSinceLastBullet += delta;
            if (timeSinceLastBullet>100){
-               CanonBall canonBall = new CanonBall(this.rocket.getX(), this.rocket.getY());
-               actorsList.add(canonBall);
+               Laser laser = new Laser(this.turtle.getX() +5, this.turtle.getY()+10);
+               actorsList.add(laser);
                timeSinceLastBullet=0;
            }
         }

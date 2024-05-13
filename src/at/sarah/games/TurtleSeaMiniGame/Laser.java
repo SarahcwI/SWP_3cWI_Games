@@ -1,22 +1,24 @@
 package at.sarah.games.TurtleSeaMiniGame;
 
 import at.sarah.games.collision.CollissionActor;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Shape;
 
-public class CanonBall implements CollissionActor {
+public class Laser implements CollissionActor {
     private float x,y,speed;
 
-    public CanonBall(float x, float y) {
+    public Laser(float x, float y) {
         this.x = x;
         this.y = y;
-        this.speed = 4;
+        this.speed = 1;
           }
 
     @Override
     public void render(Graphics graphics) {
-        graphics.fillOval(this.x, this.y,20,20);
+        graphics.fillRect(this.x, this.y,40,7);
+        graphics.setColor(new Color(255,0,0));
     }
 
     @Override
