@@ -20,9 +20,8 @@ public class Circle implements Actor {
 
         if (isHit){
             graphics.setColor(new Color(100,100,100));
-
-
         }
+
         graphics.draw(shape);
         graphics.setColor(Color.white);
     }

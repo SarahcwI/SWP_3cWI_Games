@@ -1,7 +1,6 @@
-package at.sarah.games.rocketMiniGame;
+package at.sarah.games.TurtleSeaMiniGame;
 
 import at.sarah.games.collision.CollissionActor;
-import at.sarah.games.firstgame.Actor;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Shape;
 
@@ -19,7 +18,7 @@ public class Rocket implements CollissionActor {
         this.x = 100;
         this.y = 100;
         this.speed = 2;
-        this.rot = 90;
+        this.rot =  0;
     }
 
     @Override
@@ -32,8 +31,8 @@ public class Rocket implements CollissionActor {
 
     @Override
     public void update(GameContainer gameContainer, int delta) {
-        int width = gameContainer.getWidth();
-        int height = gameContainer.getHeight();
+        int width = RocketGameMain.SCREEN_WIDTH;
+        int height = RocketGameMain.SCREEN_HEIGHT;
 
         if(gameContainer.getInput().isKeyDown(Input.KEY_RIGHT)){
             this.x += (float)delta/speed;

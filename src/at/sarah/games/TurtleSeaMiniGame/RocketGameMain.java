@@ -1,4 +1,4 @@
-package at.sarah.games.rocketMiniGame;
+package at.sarah.games.TurtleSeaMiniGame;
 
 
 import at.sarah.games.firstgame.*;
@@ -14,6 +14,8 @@ public class RocketGameMain extends BasicGame {
     private Input input;
 
     private int timeSinceLastBullet = 0;
+    public static final int SCREEN_HEIGHT = 1500;
+    public static final int SCREEN_WIDTH = 1500;
 
     public RocketGameMain(String title) {
         super(title);
@@ -75,7 +77,7 @@ public class RocketGameMain extends BasicGame {
     public static void main(String[] argv) {
         try {
             AppGameContainer container = new AppGameContainer(new RocketGameMain("Rectangles"));
-            container.setDisplayMode(1000, 800, false);
+            container.setDisplayMode(SCREEN_WIDTH, SCREEN_HEIGHT, false);
             container.start();
         } catch (SlickException e) {
             e.printStackTrace();
