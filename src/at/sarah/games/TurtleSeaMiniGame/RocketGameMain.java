@@ -1,7 +1,7 @@
 package at.sarah.games.TurtleSeaMiniGame;
 
 
-import at.sarah.games.firstgame.*;
+
 import org.newdawn.slick.*;
 
 import java.util.ArrayList;

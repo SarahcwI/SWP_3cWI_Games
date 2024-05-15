@@ -1,6 +1,6 @@
 package at.sarah.games.TurtleSeaMiniGame;
 
-import at.sarah.games.collision.CollissionActor;
+
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Shape;
 
