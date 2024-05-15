@@ -2,9 +2,10 @@ package at.sarah.games.TurtleSeaMiniGame;
 
 
 import org.newdawn.slick.*;
+import org.newdawn.slick.geom.Circle;
 import org.newdawn.slick.geom.Shape;
-
 import java.util.Random;
+import org.newdawn.slick.geom.Shape;
 
 public class Trash implements CollissionActor {
 
@@ -12,6 +13,7 @@ public class Trash implements CollissionActor {
     private float x, y, speed;
     private float rot;
     private int diamter;
+    private Shape shapeTrash;
 
 
 
@@ -25,8 +27,13 @@ public class Trash implements CollissionActor {
         this.speed = random.nextInt(10) + 10;
         this.diamter = random.nextInt(50) + 70;
 
-        //Copy Diameter of picutre to
+        //Copy Diameter of picture to
         this.astereoid = tmp.getScaledCopy(diamter, diamter);
+
+        float radius = diamter / 2.0f;
+        this.shapeTrash = new Circle(this.x, this.y + radius, radius);
+
+
     }
 
 
@@ -34,16 +41,22 @@ public class Trash implements CollissionActor {
     public void render(Graphics graphics) {
         astereoid.draw(this.x, this.y);
         astereoid.setRotation(rot);
+        graphics.draw(this.shapeTrash);
+
     }
 
     @Override
     public void update(GameContainer gameContainer, int delta) {
         Random random = new Random();
         this.x += (float) delta / speed;
+        this.shapeTrash.setX(this.x);
 
         if (this.x > RocketGameMain.SCREEN_WIDTH) {
             this.x = 0;
+            this.shapeTrash.setX(this.x);
+
             this.y = random.nextInt(RocketGameMain.SCREEN_HEIGHT);
+            this.shapeTrash.setY(this.y);
         }
 
         rot += delta * 0.1f;
@@ -54,8 +67,8 @@ public class Trash implements CollissionActor {
     }
     
 
-    @Override
+   /* @Override
     public Shape getShape() {
         return null;
-    }
+    }*/
 }

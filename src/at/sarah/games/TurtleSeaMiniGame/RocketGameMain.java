@@ -28,18 +28,19 @@ public class RocketGameMain extends BasicGame {
         input = gameContainer.getInput();
         //input.enableKeyRepeat(0,0);
 
-
-
-        for (int i = 0; i < 10; i++) {
-            Trash trash = new Trash();
-            actorsList.add(trash);
-
-        }
-
         Turtle turtle = new Turtle();
         actorsList.add(turtle);
 
         this.turtle = turtle;
+
+        for (int i = 0; i < 10; i++) {
+            Trash trash = new Trash();
+            actorsList.add(trash);
+            this.turtle.addCollisionActor(trash);
+
+        }
+
+
     }
 
 
