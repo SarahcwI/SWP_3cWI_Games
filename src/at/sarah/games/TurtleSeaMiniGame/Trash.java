@@ -22,9 +22,10 @@ public class Trash implements CollissionActor {
         Image tmp = new Image("testdata/astereoid.png");
 
         //picture
-        this.x = random.nextInt(RocketGameMain.SCREEN_WIDTH);
+        this.x = random.nextInt(RocketGameMain.SCREEN_WIDTH) ;
         this.y = random.nextInt(RocketGameMain.SCREEN_HEIGHT);
-        this.speed = random.nextInt(10) + 10;
+
+        this.speed = random.nextInt(10) + 5;
         this.diamter = random.nextInt(50) + 70;
 
         //Copy Diameter of picture to

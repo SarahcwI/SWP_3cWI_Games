@@ -32,6 +32,9 @@ public class Turtle implements CollissionActor {
 
     @Override
     public void render(Graphics graphipcs){
+        turtleImage.draw(this.x,this.y);
+        turtleImage.setRotation(rot);
+
     }
 
     @Override
