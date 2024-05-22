@@ -18,7 +18,7 @@ public class Laser implements CollissionActor {
     @Override
     public void render(Graphics graphics) {
         graphics.fillRect(this.x, this.y,40,7);
-        graphics.setColor(new Color(255,0,0));
+        graphics.setColor(new Color(255,255,0));
     }
 
     @Override

@@ -39,8 +39,6 @@ public class RocketGameMain extends BasicGame {
             this.turtle.addCollisionActor(trash);
 
         }
-
-
     }
 
 
