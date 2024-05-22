@@ -95,9 +95,9 @@ public class Turtle implements CollissionActor {
 
     private void checkCollision() {
         for (CollissionActor collissionActor : this.collissionActors) {
-            /*if (collissionActor.getShape().intersects(this.getShape())) {
+            if (collissionActor.getShape().intersects(this.getShape())) {
                 System.out.println("Collission...");
-            }*/
+            }
         }
     }
 
@@ -110,8 +110,8 @@ public class Turtle implements CollissionActor {
     }
 
 
-   /* @Override
+    @Override
     public Shape getShape() {
-        return null;
-    }*/
+        return shapeTurtle;
+    }
 }

@@ -1,6 +1,4 @@
 package at.sarah.games.TurtleSeaMiniGame;
-
-
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Circle;
 import org.newdawn.slick.geom.Shape;
@@ -64,10 +62,10 @@ public class Trash implements CollissionActor {
         }
 
     }
-    
 
-   /* @Override
+
+    @Override
     public Shape getShape() {
-        return null;
-    }*/
+        return shapeTrash;
+    }
 }

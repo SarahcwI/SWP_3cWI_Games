@@ -26,8 +26,8 @@ public class Laser implements CollissionActor {
         this.x+= (float) delta/speed;
     }
 
-   /* @Override
+    @Override
     public Shape getShape() {
         return null;
-    }*/
+    }
 }
