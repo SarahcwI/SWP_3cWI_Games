@@ -1,7 +1,6 @@
 package at.sarah.games.TurtleSeaMiniGame;
 
 
-
 import org.newdawn.slick.*;
 
 import java.util.ArrayList;
@@ -10,6 +9,7 @@ import java.util.List;
 
 public class RocketGameMain extends BasicGame {
     private List<Actor> actorsList;
+    private List<Trash> trashList;
     private Turtle turtle;
     private Input input;
 
@@ -24,9 +24,9 @@ public class RocketGameMain extends BasicGame {
 
     @Override
     public void init(GameContainer gameContainer) throws SlickException {
-        this.actorsList = new ArrayList<>();
         input = gameContainer.getInput();
-        //input.enableKeyRepeat(0,0);
+        this.actorsList = new ArrayList<>();
+        this.trashList = new ArrayList<>();
 
         Turtle turtle = new Turtle();
         this.turtle = turtle;
@@ -35,13 +35,10 @@ public class RocketGameMain extends BasicGame {
         for (int i = 0; i < 10; i++) {
             Trash trash = new Trash();
             actorsList.add(trash);
+            trashList.add(trash);
             this.turtle.addCollisionActor(trash);
-
         }
-
     }
-
-
 
 
     @Override
@@ -55,17 +52,24 @@ public class RocketGameMain extends BasicGame {
             actor.update(gameContainer, delta);
         }
 
-        if (input.isKeyDown(Input.KEY_SPACE)){
+        if (input.isKeyDown(Input.KEY_SPACE)) {
             this.timeSinceLastBullet += delta;
 
-           if (timeSinceLastBullet>100){
-               Laser laser = new Laser(this.turtle.getX() +5, this.turtle.getY()+10);
-               actorsList.add(laser);
-               this.turtle.addCollisionActor(laser);
-               timeSinceLastBullet=0;
-           }
+            if (timeSinceLastBullet > 100) {
+                System.out.println("makin laser");
+                Laser laser = new Laser(this.turtle.getX() + 5, this.turtle.getY() + 10);
+                this.actorsList.add(laser);
+
+                for (Trash trash : trashList) {
+                    laser.addCollisionActor(trash);
+                    System.out.println("Added Tras to laser");
+                }
+
+                timeSinceLastBullet = 0;
+            }
         }
     }
+
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {

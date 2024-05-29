@@ -2,7 +2,6 @@ package at.sarah.games.TurtleSeaMiniGame;
 
 
 import org.newdawn.slick.*;
-import org.newdawn.slick.geom.Circle;
 import org.newdawn.slick.geom.Ellipse;
 import org.newdawn.slick.geom.Shape;
 
@@ -16,6 +15,8 @@ public class Turtle implements CollissionActor {
     private float rot;
     private List<CollissionActor> collissionActors;
     private Shape shapeTurtle;
+
+    private int hitCounter = 0;
 
     public static final float Y_OFFSET = 29;
 
@@ -36,6 +37,8 @@ public class Turtle implements CollissionActor {
         float centerPointEllipseY = this.y + ellipseHeight * 1.8f;
 
         this.shapeTurtle = new Ellipse(centerPointEllipseX, centerPointEllipseY, ellipseWidth, ellipseHeight);
+
+
     }
 
     public void addCollisionActor(CollissionActor collissionActor) {
@@ -91,15 +94,21 @@ public class Turtle implements CollissionActor {
             }
         }
         checkCollision();
+
+
     }
 
-    private void checkCollision() {
+    private boolean checkCollision() {
         for (CollissionActor collissionActor : this.collissionActors) {
             if (collissionActor.getShape().intersects(this.getShape())) {
-                System.out.println("Collission...");
+               System.out.println("Collission...");
+               return true;
             }
         }
+        return false;
     }
+
+
 
     public float getX() {
         return x + 100;
