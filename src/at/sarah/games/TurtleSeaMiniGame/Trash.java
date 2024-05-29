@@ -2,6 +2,9 @@ package at.sarah.games.TurtleSeaMiniGame;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Circle;
 import org.newdawn.slick.geom.Shape;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Trash implements CollissionActor {
@@ -11,6 +14,8 @@ public class Trash implements CollissionActor {
     private float rot;
     private int diamter;
     private Shape shapeTrash;
+    private List<CollissionActor> collissionActors;
+
 
 
 
@@ -31,6 +36,12 @@ public class Trash implements CollissionActor {
 
         float radius = diamter / 2.0f;
         this.shapeTrash = new Circle(this.x, this.y + radius, radius);
+
+        this.collissionActors = new ArrayList<>();
+    }
+
+    public void addCollisionActor(CollissionActor collissionActor) {
+        this.collissionActors.add(collissionActor);
     }
 
 
@@ -61,11 +72,23 @@ public class Trash implements CollissionActor {
             rot -= 360;
         }
 
+        checkCollision();
+
     }
+
+
 
 
     @Override
     public Shape getShape() {
         return shapeTrash;
+    }
+
+    private void checkCollision() {
+        for (CollissionActor collissionActor : this.collissionActors) {
+            if (collissionActor.getShape().intersects(this.getShape())) {
+                System.out.println("Collission...");
+            }
+        }
     }
 }

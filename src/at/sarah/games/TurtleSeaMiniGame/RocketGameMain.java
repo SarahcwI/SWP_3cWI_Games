@@ -29,9 +29,8 @@ public class RocketGameMain extends BasicGame {
         //input.enableKeyRepeat(0,0);
 
         Turtle turtle = new Turtle();
-        actorsList.add(turtle);
-
         this.turtle = turtle;
+        actorsList.add(turtle);
 
         for (int i = 0; i < 10; i++) {
             Trash trash = new Trash();
@@ -39,6 +38,7 @@ public class RocketGameMain extends BasicGame {
             this.turtle.addCollisionActor(trash);
 
         }
+
     }
 
 
@@ -56,11 +56,12 @@ public class RocketGameMain extends BasicGame {
         }
 
         if (input.isKeyDown(Input.KEY_SPACE)){
-            System.out.println("Down");
             this.timeSinceLastBullet += delta;
+
            if (timeSinceLastBullet>100){
                Laser laser = new Laser(this.turtle.getX() +5, this.turtle.getY()+10);
                actorsList.add(laser);
+               this.turtle.addCollisionActor(laser);
                timeSinceLastBullet=0;
            }
         }
