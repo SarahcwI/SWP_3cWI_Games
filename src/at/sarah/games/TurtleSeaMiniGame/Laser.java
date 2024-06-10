@@ -46,6 +46,11 @@ public class Laser implements CollissionActor {
         return laserShape;
     }
 
+    @Override
+    public void isHit() {
+
+    }
+
 
     public void addCollisionActor(CollissionActor collissionActor) {
         this.collissionActors.add(collissionActor);
@@ -55,7 +60,8 @@ public class Laser implements CollissionActor {
     private void checkCollision() {
         for (CollissionActor collissionActor : this.collissionActors) {
             if (collissionActor.getShape().intersects(this.getShape())) {
-                System.out.println("COLLISSION...");
+                System.out.println("Laser COLLISSION...");
+                collissionActor.isHit();
             }
         }
     }

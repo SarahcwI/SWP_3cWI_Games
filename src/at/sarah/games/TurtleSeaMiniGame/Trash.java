@@ -14,6 +14,8 @@ public class Trash implements CollissionActor {
     private float rot;
     private int diamter;
     private Shape shapeTrash;
+    private boolean isHit = false;
+    private int millisSinceHit = 0;
     private List<CollissionActor> collissionActors;
 
 
@@ -47,9 +49,13 @@ public class Trash implements CollissionActor {
 
     @Override
     public void render(Graphics graphics) {
+        if (isHit) return;
         trashImage.draw(this.x, this.y);
         trashImage.setRotation(rot);
+        if (isHit) {graphics.setColor(Color.red);}
         graphics.draw(this.shapeTrash);
+        graphics.setColor(Color.white);
+
 
     }
 
@@ -73,7 +79,6 @@ public class Trash implements CollissionActor {
         }
 
         checkCollision();
-
     }
 
 
@@ -84,10 +89,16 @@ public class Trash implements CollissionActor {
         return shapeTrash;
     }
 
+    @Override
+    public void isHit() {
+        System.out.println("I am hit");
+        this.isHit = true;
+    }
+
     private void checkCollision() {
         for (CollissionActor collissionActor : this.collissionActors) {
             if (collissionActor.getShape().intersects(this.getShape())) {
-                System.out.println("Collission...");
+                System.out.println("Trash Collission...");
             }
         }
     }

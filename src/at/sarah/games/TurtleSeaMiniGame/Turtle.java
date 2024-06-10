@@ -37,8 +37,6 @@ public class Turtle implements CollissionActor {
         float centerPointEllipseY = this.y + ellipseHeight * 1.8f;
 
         this.shapeTurtle = new Ellipse(centerPointEllipseX, centerPointEllipseY, ellipseWidth, ellipseHeight);
-
-
     }
 
     public void addCollisionActor(CollissionActor collissionActor) {
@@ -101,13 +99,12 @@ public class Turtle implements CollissionActor {
     private boolean checkCollision() {
         for (CollissionActor collissionActor : this.collissionActors) {
             if (collissionActor.getShape().intersects(this.getShape())) {
-               System.out.println("Collission...");
-               return true;
+                System.out.println("Turtle Collission...");
+                return true;
             }
         }
         return false;
     }
-
 
 
     public float getX() {
@@ -122,5 +119,10 @@ public class Turtle implements CollissionActor {
     @Override
     public Shape getShape() {
         return shapeTurtle;
+    }
+
+    @Override
+    public void isHit() {
+
     }
 }
