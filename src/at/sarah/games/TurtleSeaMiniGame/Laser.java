@@ -1,5 +1,4 @@
 package at.sarah.games.TurtleSeaMiniGame;
-
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -14,6 +13,7 @@ public class Laser implements CollissionActor {
     private float x, y, speed;
     private Shape laserShape;
     private List<CollissionActor> collissionActors;
+    private boolean isHit = false;
 
 
 
@@ -28,9 +28,13 @@ public class Laser implements CollissionActor {
 
     @Override
     public void render(Graphics graphics) {
+        if (isHit) return;
         graphics.fillRect(this.x, this.y, 40, 7);
         graphics.setColor(new Color(255, 255, 0));
         graphics.draw(laserShape);
+
+        if (isHit) {graphics.setColor(Color.red);}
+
     }
 
     @Override
@@ -48,6 +52,8 @@ public class Laser implements CollissionActor {
 
     @Override
     public void isHit() {
+        System.out.println("I am dissapearing");
+        this.isHit = true;
 
     }
 
